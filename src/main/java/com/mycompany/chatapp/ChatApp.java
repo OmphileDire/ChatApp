@@ -16,16 +16,39 @@ public class ChatApp {
         Registration registration = new Registration();
         
         //Prompting the user to enter their detaails
-        System.out.println("Enter your username: ");
+        System.out.println("Enter your username: " + "(must cointain an underscore, and be less than 5 characters)");
         String username = input.nextLine();
         System.out.println(registration.returnUserNameMessage(username));
         
-        System.out.println("Enter your password: ");
+        System.out.println("Enter your password: " + "(password must be: "
+                + "atleast 8 characters long, "
+                + "contain a capital letter, "
+                + "contain a number,"
+                + "contain a special character.)");
+        
         String password = input.nextLine();
         System.out.println(registration.returnCheckPasswordMessage(password));
         
-        System.out.println("Enter your cellphone number: ");
+        System.out.println("Enter your cellphone number: " + " (must contain a international country code)");
         String cellPhoneNumber = input.nextLine();
         System.out.println(registration.returncheckCellPhoneNumberMessage(cellPhoneNumber));
+        
+        Login login = new Login(username, password);
+        System.out.println("Enter your first name: ");
+        String firstName = input.nextLine();
+        
+        System.out.println("Enter your last name: ");
+        String lastName = input.nextLine();
+        
+        System.out.println("Enter your password: ");
+        String loginPassword = input.nextLine();
+        
+        System.out.println("Enter your username: ");
+        String loginUserName = input.nextLine();
+        
+        System.out.println(login.returnLoginStatus(loginUserName, loginPassword, firstName, lastName));
+        
+        
+        
     }
 }
