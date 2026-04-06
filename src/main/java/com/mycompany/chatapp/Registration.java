@@ -65,7 +65,7 @@ public class Registration {
         if (checkCellPhoneNumber(cellPhoneNumber)){
             return "Cell phone number successfully added.";
         } else {
-            return "Cell phone number incorrectly formatted or does not contain international code";
+            return "Cell phone number incorrectly formatted or does not contain international code; please correct the number and try again.";
         }
     }
  }

@@ -13,6 +13,7 @@ public class ChatApp {
     public static void main(String[] args) {
         //A scanner to read the user's input
         Scanner input = new Scanner(System.in);
+        //Registration object to access validation methods
         Registration registration = new Registration();
         
         //Prompting the user to enter their detaails
@@ -33,7 +34,10 @@ public class ChatApp {
         String cellPhoneNumber = input.nextLine();
         System.out.println(registration.returncheckCellPhoneNumberMessage(cellPhoneNumber));
         
+        //Login object with registration credentials
         Login login = new Login(username, password);
+        
+        //Prompting user to enter their login details
         System.out.println("Enter your first name: ");
         String firstName = input.nextLine();
         
