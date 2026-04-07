@@ -63,4 +63,34 @@ public class RegistrationTest {
         assertEquals("Cell phone number incorrectly formatted or does not contain international code; please correct the number and try again." ,
                 registration.returncheckCellPhoneNumberMessage("08966553"));
     }
+    @Test
+    public void testCheckUserNameTrue() {
+        Registration registration = new Registration();
+        assertTrue(registration.checkUserName("Kyl_1"));
+    }
+    @Test
+    public void testCheckUserNameFalse() {
+        Registration registration = new Registration();
+        assertFalse(registration.checkUserName("Kyle!!!!!"));
+    }
+    @Test
+    public void testCheckPasswordTrue() {
+        Registration registration = new Registration();
+        assertTrue(registration.checkPasswordComplexity("Ch&&sec@ke99!"));
+    }
+    @Test
+    public void testCheckPasswordFalse() {
+        Registration registration = new Registration();
+        assertFalse(registration.checkPasswordComplexity("password"));
+    }
+    @Test
+    public void testCheckCellPhoneNummberTrue() {
+        Registration registration = new Registration();
+        assertTrue(registration.checkCellPhoneNumber("+27838968976"));
+    }
+    @Test
+    public void testCheckCellPhoneNummberFalse() {
+        Registration registration = new Registration();
+        assertFalse(registration.checkCellPhoneNumber("08966553"));
+    }
 }

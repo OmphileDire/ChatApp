@@ -5,7 +5,7 @@
 package com.mycompany.chatapp;
 /**
  *
- * @author omphi
+ * @author omphi 
  */
 public class Registration {
     //the method to validate the username
