@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package com.mycompany.chatapp;
+
+import com.mycompany.chatapp.Login;
+import com.mycompany.chatapp.Registration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,9 +17,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author omphi
  */
 public class RegistrationTest {
- 
-
-    @Test
+    
+     @Test
     //Test a correctly formatted username to return message
     public void testCheckUserNameCorrect() {
         Registration registration = new Registration();
@@ -92,5 +93,15 @@ public class RegistrationTest {
     public void testCheckCellPhoneNummberFalse() {
         Registration registration = new Registration();
         assertFalse(registration.checkCellPhoneNumber("08966553"));
+    }
+    @Test
+    public void testLoginSuccessful() {
+        Login login = new Login("Kyl_1" ,"Ch&&sec@ke99!");
+        assertTrue(login.loginUser("Kyl_1" ,"Ch&&sec@ke99!"));
+    }
+    @Test
+    public void testLoginUnSuccessful() {
+        Login login = new Login("Kyl_1" ,"Ch&&sec@ke99!");
+        assertFalse(login.loginUser("WrongUser" ,"WrongPass"));
     }
 }

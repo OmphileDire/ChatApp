@@ -5,7 +5,7 @@
 package com.mycompany.chatapp;
 /**
  *
- * @author omphi 
+ * @author omphi
  */
 public class Registration {
     //the method to validate the username
@@ -65,7 +65,7 @@ public class Registration {
         if (checkCellPhoneNumber(cellPhoneNumber)){
             return "Cell phone number successfully added.";
         } else {
-            return "Cell phone number incorrectly formatted or does not contain international code; please correct the number and try again.";
+            return "Cell phone number incorrectly formatted or does not contain international code(+27); please correct the number and try again.";
         }
     }
  }
