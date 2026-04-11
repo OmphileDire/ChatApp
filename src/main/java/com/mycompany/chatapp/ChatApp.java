@@ -9,6 +9,38 @@ import java.util.Scanner;
  *
  * @author omphi
  */
+
+/*
+ REFERENCES
+ [1] Bro Code, "Java Full Course for free," YouTube.
+     [Online]. Available: https://www.youtube.com/@BroCodez
+     [Accessed: 11 Apr. 2026].
+
+ [2] Programming with Mosh, "Java Tutorial for Beginners," YouTube.
+     [Online]. Available: https://www.youtube.com/@programmingwithmosh
+     [Accessed: 11 Apr. 2026].
+
+ [3] GeeksforGeeks, "Java Programming Language," geeksforgeeks.org.
+     [Online]. Available: https://www.geeksforgeeks.org/java/
+     [Accessed: 11 Apr. 2026].
+
+ [4] Codecademy, "Learn Java," codecademy.com.
+     [Online]. Available: https://www.codecademy.com/learn/learn-java
+     [Accessed: 11 Apr. 2026].
+
+ [5] Sololearn, "Java Introduction," sololearn.com.
+     [Online]. Available: https://www.sololearn.com/learn/courses/java-introduction
+     [Accessed: 11 Apr. 2026].
+
+ [6] Learn Java Online, "Learn Java Online," learnjavaonline.org.
+     [Online]. Available: https://www.learnjavaonline.org
+     [Accessed: 11 Apr. 2026].
+ */
+
+// References used build this app:
+// Bro Code [1], Programming with Mosh [2], 
+// Sololearn [5], LearnJavaOnline [6]
+
 public class ChatApp {
 
     public static void main(String[] args) {

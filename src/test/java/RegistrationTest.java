@@ -16,6 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author omphi
  */
+
+// References used for JUnit testing:
+// GeeksforGeeks [3], Codecademy [4]
+
 public class RegistrationTest {
     
      @Test

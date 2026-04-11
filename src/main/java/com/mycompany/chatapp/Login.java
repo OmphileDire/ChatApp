@@ -8,6 +8,10 @@ package com.mycompany.chatapp;
  *
  * @author omphi
  */
+
+// References used for login logic and String comparison:
+// Bro Code [1], Programming with Mosh [2], GeeksforGeeks [3]
+
 public class Login {
     ////Instance variables used to store user credentials
     private String storedUserName;

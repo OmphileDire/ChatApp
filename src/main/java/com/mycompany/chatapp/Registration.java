@@ -7,6 +7,10 @@ package com.mycompany.chatapp;
  *
  * @author omphi
  */
+
+// References used for validation and regular expressions:
+// GeeksforGeeks [3], Codecademy [4], Sololearn [5], LearnJavaOnline [6]
+
 public class Registration {
     //the method to validate the username
     public boolean checkUserName(String username){
