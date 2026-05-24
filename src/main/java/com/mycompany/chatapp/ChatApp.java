@@ -106,8 +106,85 @@ public class ChatApp {
           loggedIn = true;
         } else {
             System.out.println("Username or password incorrect, please try again.");
-            }
-       
-        }   
+            
+        }
+        }
+        
+        //PART 2
+        // Display welcome message
+System.out.println("Welcome to QuickChat.");
+
+// Menu loop
+int menuChoice = 0;
+
+// List to store all sent messages
+java.util.ArrayList<String> sentMessages = new java.util.ArrayList<>();
+int totalMessagesSent = 0;
+
+do {
+    System.out.println("Please select an option:");
+    System.out.println("1) Send Messages");
+    System.out.println("2) Show recently sent messages");
+    System.out.println("3) Quit");
+    menuChoice = Integer.parseInt(input.nextLine());
+
+    if (menuChoice == 1) {
+        System.out.println("How many messages do you want to send?");
+        int numMessages = Integer.parseInt(input.nextLine());
+    
+        for (int i = 0; i < numMessages; i++) {
+            System.out.println("Enter recipient number: ");
+            String recipientNumber = input.nextLine();
+
+            System.out.println("Enter message: ");
+            String messageText = input.nextLine();
+
+            Message tempMessage = new Message("0000000000", "0000000000", messageText, i);
+            String lengthCheck = tempMessage.checkMessageLength(messageText);
+            System.out.println(lengthCheck);
+
+            if (lengthCheck.equals("Message ready to send.")) {
+                String messageID = String.valueOf((long)(Math.random() * 9000000000L) + 1000000000L);
+                Message message = new Message(messageID, recipientNumber, messageText, i);
+                String messageHash = message.createMessageHash(messageID, i, messageText);
+
+                System.out.println(message.printMessages(messageID, recipientNumber,
+                        messageText, messageHash));
+
+                System.out.println("1) Send Message");
+                System.out.println("2) Disregard Message");
+                System.out.println("3) Store Message");
+                int choice = Integer.parseInt(input.nextLine());
+                
+                
+
+    if (choice == 1) {
+                System.out.println(message.SentMessage(choice));
+                sentMessages.add(message.printMessages(messageID, recipientNumber,
+                    messageText, messageHash));
+    totalMessagesSent++;
+   } else if (choice == 2) {
+                System.out.println(message.SentMessage(choice));
+   } else if (choice == 3) {
+                message.storeMessage(messageID, recipientNumber, messageText, messageHash);
+                sentMessages.add(message.printMessages(messageID, recipientNumber,
+                    messageText, messageHash));
+    totalMessagesSent++;
+    } 
+     }
+     }
+    } else if (menuChoice == 2) {
+     System.out.println("Coming Soon.");   
+    }
+} while (menuChoice != 3);
+
+// Display total messages sent
+System.out.println("Total messages sent: " + totalMessagesSent);
+System.out.println("Messages sent during this session:");
+
+for (String msg : sentMessages) {
+    System.out.println(msg);
+}
+System.out.println("Goodbye!");
     }
 }
