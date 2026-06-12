@@ -5,6 +5,7 @@
 
 package com.mycompany.chatapp;
 import java.util.Scanner;
+import java.util.ArrayList;
 /**
  *
  * @author omphi
@@ -107,8 +108,8 @@ public class ChatApp {
         } else {
             System.out.println("Username or password incorrect, please try again.");
             
-        }
-        }
+         }
+       }
         
         //PART 2
         // Display welcome message
@@ -125,7 +126,8 @@ do {
     System.out.println("Please select an option:");
     System.out.println("1) Send Messages");
     System.out.println("2) Show recently sent messages");
-    System.out.println("3) Quit");
+    System.out.println("3) Stored Messages");
+    System.out.println("4) Quit");
     menuChoice = Integer.parseInt(input.nextLine());
 
     if (menuChoice == 1) {
@@ -158,25 +160,111 @@ do {
                 
                 
 
-    if (choice == 1) {
-                System.out.println(message.SentMessage(choice));
-                sentMessages.add(message.printMessages(messageID, recipientNumber,
-                    messageText, messageHash));
+   if (choice == 1) {
+        System.out.println(message.SentMessage(choice));
+        Message.addSentMessage(messageText);
+        Message.addMessageHash(messageHash);
+        Message.addMessageID(messageID);
     totalMessagesSent++;
-   } else if (choice == 2) {
-                System.out.println(message.SentMessage(choice));
-   } else if (choice == 3) {
-                message.storeMessage(messageID, recipientNumber, messageText, messageHash);
-                sentMessages.add(message.printMessages(messageID, recipientNumber,
-                    messageText, messageHash));
+ } else if (choice == 2) {
+        System.out.println(message.SentMessage(choice));
+        Message.addDisregardedMessage(messageText);
+ } else if (choice == 3) {
+        message.storeMessage(messageID, recipientNumber, messageText, messageHash);
+        Message.addStoredMessage(messageText);
+        Message.addMessageHash(messageHash);
+        Message.addMessageID(messageID);
     totalMessagesSent++;
-    } 
-     }
+}  
+      }
      }
     } else if (menuChoice == 2) {
      System.out.println("Coming Soon.");   
+    } else if (menuChoice == 3) {
+       System.out.println("Stored Messages menu:"); 
+       System.out.println("1) Display all stored messages");
+       System.out.println("2) Display longest message");
+       System.out.println("3) Search for message ID");
+       System.out.println("4) Search messages by recipient");
+       System.out.println("5) Delete message using hash");
+       System.out.println("6) Display report");
+       int storedChoice = Integer.parseInt(input.nextLine());
+       
+       if (storedChoice == 1) {
+           //displaying all the stored messagses
+           ArrayList<String> stored = Message.getStoredMessages();
+           if (stored.isEmpty()) {
+             System.out.println("No stored messages.");  
+           } else {
+               for (String msg : stored) {
+                 System.out.println(msg);  
+               }
+           }
+       } else if (storedChoice == 2) {
+           //dispay longest message
+           ArrayList<String> stored = Message.getStoredMessages();
+           String longest = "";
+           for (String msg : stored) {
+             if (msg.length() > longest.length()) {
+                 longest = msg;
+             }  
+           }
+            System.out.println("Longest message: " + longest);
+       } else if (storedChoice == 3) {
+           //search for message ID
+           System.out.println("Enter message ID to search: ");
+           String searchID = input.nextLine();
+           ArrayList<String> ids = Message.getMessageIDs();
+           int index = ids.indexOf(searchID);
+           if (index != -1) {
+             System.out.println("Message found: " + Message.getStoredMessages().get(index));  
+           } else {
+               System.out.println("Message ID not found.");
+           }
+       }  else if (storedChoice == 4) {
+           //serach by recipient
+          System.out.println("Enter recipient number to search: ");
+          String searchRecipient = input.nextLine();
+          ArrayList<String> stored = Message.getStoredMessages();
+         boolean found = false;
+          for (String msg : stored) {
+            if (msg.contains(searchRecipient)) {
+                System.out.println(msg);
+                found = true;
+            }  
+          }
+          if (!found) {
+              System.out.println("No messages found for that recipient.");
+          }
+       } else if (storedChoice == 5) {
+           //Delete message using hash
+           System.out.println("Enter message hash to delete: ");
+           String searchHash = input.nextLine();
+           ArrayList<String> hashes = Message.getMessageHashes();
+           int index = hashes.indexOf(searchHash);
+           if (index != -1) {
+              String deletedMessage = Message.getStoredMessages().get(index);
+              Message.getStoredMessages().remove(index);
+              Message.getMessageHashes().remove(index);
+              System.out.println("Message: \"" + deletedMessage + "\" successfully deleted.");
+           }  else {
+               System.out.println("Message hash not found.");
+           }    
+       } else if (storedChoice == 6) {
+           //Display the report
+           ArrayList<String> hashes = Message.getMessageHashes();
+           ArrayList<String> stored = Message.getStoredMessages();
+           System.out.println("Full Report");
+           for (int i = 0; i < stored.size(); i++) {
+           System.out.println("Message Hash: " + hashes.get(i));
+           System.out.println("Message: " + stored.get(i));
+           System.out.println("   ");
+        }
+       }
     }
-} while (menuChoice != 3);
+    
+    
+} while (menuChoice != 4);
 
 // Display total messages sent
 System.out.println("Total messages sent: " + totalMessagesSent);
@@ -188,3 +276,7 @@ for (String msg : sentMessages) {
 System.out.println("Goodbye!");
     }
 }
+       
+        
+                     
+    

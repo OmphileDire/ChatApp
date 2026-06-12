@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.chatapp;
-
+import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
 /**
  *
  * @author omphi
@@ -14,6 +16,13 @@ public class Message {
     private String recipientNumber;
     private String messageText;
     private int numMessagesSent;
+    
+    //Static arrays to store message information
+    private static ArrayList<String> sentMessages = new ArrayList<>();
+    private static ArrayList<String> disregardedMessages = new ArrayList<>();
+    private static ArrayList<String> storedMessages = new ArrayList<>();
+    private static ArrayList<String> messageHashes = new ArrayList<>();
+    private static ArrayList<String> messageIDs = new ArrayList<>();
     
     // Constructor to initialise message details
     public Message(String messageID, String recipientNumber,
@@ -94,7 +103,7 @@ public class Message {
             System.out.println("Error storing message: " + e.getMessage()); 
          }
     }
-    // Method to check if message is not more than 250 characters
+    //Method to check if message is not more than 250 characters
     public String checkMessageLength(String messageText) {
         if (messageText.length() <= 250) {
             return "Message ready to send.";
@@ -104,4 +113,41 @@ public class Message {
                     + "; please reduce the size.";
         }
     }
+    //Method to add message to sent array
+    public static void addSentMessage(String message) {
+        sentMessages.add(message);
     }
+    //Method to add message to disregarded array
+    public static void addDisregardedMessage(String message) {
+        disregardedMessages.add(message);
+    }
+    //Method to add message to stored array
+    public static void addStoredMessage(String message) {
+        storedMessages.add(message);
+    }
+    //Method to add message hash to array
+    public static void addMessageHash(String hash) {
+        messageHashes.add(hash);
+    }
+    //Method to add message ID to array
+    public static void addMessageID(String id) {
+        messageIDs.add(id);
+    }
+    //Method to get sent messages array
+    public static ArrayList<String> getSentMessages() {
+        return sentMessages;
+    }
+    //Method to get stored messages array
+    public static ArrayList<String> getStoredMessages() {
+        return storedMessages;
+    }
+    //Method to get message hashes array
+    public static ArrayList<String> getMessageHashes() {
+        return messageHashes;
+    }
+    //Method to get message IDs array
+    public static ArrayList<String> getMessageIDs() {
+        return messageIDs;
+    }
+    }
+
